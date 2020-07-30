@@ -15,9 +15,29 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/")
 public class ServerController {
 
+  static String a="1";
   @GetMapping("/msg")
   public String msg(){
+    ServerController.a = "12";
     return "this is msg";
   }
 
+  @GetMapping("/msg1")
+  public String msg1(){
+    ServerController.a = "13";
+    return "this is msg";
+  }
+
+  public static void main(String[] args) {
+    ServerController s1 = new ServerController();
+    System.out.println(ServerController.a);
+    ServerController.a = "2";
+
+    System.out.println(ServerController.a);
+    System.out.println(s1.msg());
+    System.out.println(ServerController.a);
+    System.out.println(s1.msg1());
+    System.out.println(ServerController.a);
+
+  }
 }
